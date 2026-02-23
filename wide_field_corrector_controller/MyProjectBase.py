@@ -20,7 +20,7 @@ _ = gettext.gettext
 class MainFrame ( wx.Frame ):
 
     def __init__( self, parent ):
-        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = _(u"Wide Field Corrector Controller"), pos = wx.DefaultPosition, size = wx.Size( 1200,900 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = _(u"Wide Field Corrector Controller"), pos = wx.DefaultPosition, size = wx.Size( 1300,900 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
         self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
         self.SetFont( wx.Font( 10, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "Noto Sans Soyombo" ) )
@@ -111,11 +111,27 @@ class MainFrame ( wx.Frame ):
 
         bSizer11 = wx.BoxSizer( wx.VERTICAL )
 
+        bSizer361 = wx.BoxSizer( wx.HORIZONTAL )
+
         self.m_button2 = wx.Button( sbSizer2.GetStaticBox(), wx.ID_ANY, _(u"INITIAL POSITION"), wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer11.Add( self.m_button2, 1, wx.ALL|wx.EXPAND, 5 )
+        bSizer361.Add( self.m_button2, 1, wx.ALL|wx.EXPAND, 5 )
 
         self.m_button3 = wx.Button( sbSizer2.GetStaticBox(), wx.ID_ANY, _(u"CENTER POSITION"), wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer11.Add( self.m_button3, 1, wx.ALL|wx.EXPAND, 5 )
+        bSizer361.Add( self.m_button3, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        bSizer11.Add( bSizer361, 1, wx.EXPAND, 5 )
+
+        bSizer371 = wx.BoxSizer( wx.HORIZONTAL )
+
+        self.m_button25 = wx.Button( sbSizer2.GetStaticBox(), wx.ID_ANY, _(u"PARKING POSITION"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer371.Add( self.m_button25, 1, wx.ALL|wx.EXPAND, 5 )
+
+        self.m_button31 = wx.Button( sbSizer2.GetStaticBox(), wx.ID_ANY, _(u"STOP MOTORS"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer371.Add( self.m_button31, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        bSizer11.Add( bSizer371, 1, wx.EXPAND, 5 )
 
 
         bSizer4.Add( bSizer11, 3, wx.EXPAND, 5 )
@@ -123,19 +139,17 @@ class MainFrame ( wx.Frame ):
         bSizer12 = wx.BoxSizer( wx.VERTICAL )
 
         self.m_panel9 = wx.Panel( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.BORDER_SUNKEN )
-        self.m_panel9.SetMaxSize( wx.Size( 600,240 ) )
-
         bSizer32 = wx.BoxSizer( wx.VERTICAL )
 
         bSizer27 = wx.BoxSizer( wx.HORIZONTAL )
 
-        self.m_staticText10 = wx.StaticText( self.m_panel9, wx.ID_ANY, _(u"Give input in arc second."), wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTER_HORIZONTAL )
+        self.m_staticText10 = wx.StaticText( self.m_panel9, wx.ID_ANY, _(u"Give input in arc second and move."), wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTER_HORIZONTAL )
         self.m_staticText10.Wrap( -1 )
 
-        bSizer27.Add( self.m_staticText10, 0, wx.ALL, 5 )
+        bSizer27.Add( self.m_staticText10, 1, wx.ALL|wx.EXPAND, 5 )
 
 
-        bSizer32.Add( bSizer27, 0, wx.EXPAND, 5 )
+        bSizer32.Add( bSizer27, 1, wx.EXPAND|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
         bSizer14 = wx.BoxSizer( wx.HORIZONTAL )
 
@@ -143,20 +157,16 @@ class MainFrame ( wx.Frame ):
         bSizer14.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
         self.m_textCtrl22 = wx.TextCtrl( self.m_panel9, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.m_textCtrl22.SetMaxSize( wx.Size( 60,40 ) )
-
-        bSizer14.Add( self.m_textCtrl22, 0, wx.ALL, 5 )
+        bSizer14.Add( self.m_textCtrl22, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
 
         self.m_button4 = wx.Button( self.m_panel9, wx.ID_ANY, _(u"North"), wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.m_button4.SetMaxSize( wx.Size( 40,40 ) )
-
-        bSizer14.Add( self.m_button4, 0, wx.ALL, 5 )
+        bSizer14.Add( self.m_button4, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
 
 
         bSizer14.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
 
-        bSizer32.Add( bSizer14, 1, wx.EXPAND, 5 )
+        bSizer32.Add( bSizer14, 2, wx.EXPAND, 5 )
 
         bSizer15 = wx.BoxSizer( wx.HORIZONTAL )
 
@@ -164,33 +174,25 @@ class MainFrame ( wx.Frame ):
         bSizer15.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
         self.m_textCtrl23 = wx.TextCtrl( self.m_panel9, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.m_textCtrl23.SetMaxSize( wx.Size( 60,40 ) )
-
-        bSizer15.Add( self.m_textCtrl23, 0, wx.ALL, 5 )
+        bSizer15.Add( self.m_textCtrl23, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
 
         self.m_button5 = wx.Button( self.m_panel9, wx.ID_ANY, _(u"West"), wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.m_button5.SetMaxSize( wx.Size( 40,40 ) )
-
-        bSizer15.Add( self.m_button5, 0, wx.ALL, 5 )
+        bSizer15.Add( self.m_button5, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
 
 
         bSizer15.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
         self.m_textCtrl24 = wx.TextCtrl( self.m_panel9, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.m_textCtrl24.SetMaxSize( wx.Size( 60,40 ) )
-
-        bSizer15.Add( self.m_textCtrl24, 0, wx.ALL, 5 )
+        bSizer15.Add( self.m_textCtrl24, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
 
         self.m_button6 = wx.Button( self.m_panel9, wx.ID_ANY, _(u"East "), wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.m_button6.SetMaxSize( wx.Size( 40,40 ) )
-
-        bSizer15.Add( self.m_button6, 0, wx.ALL, 5 )
+        bSizer15.Add( self.m_button6, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
 
 
         bSizer15.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
 
-        bSizer32.Add( bSizer15, 1, wx.EXPAND, 5 )
+        bSizer32.Add( bSizer15, 2, wx.EXPAND, 5 )
 
         bSizer16 = wx.BoxSizer( wx.HORIZONTAL )
 
@@ -198,47 +200,84 @@ class MainFrame ( wx.Frame ):
         bSizer16.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
         self.m_textCtrl25 = wx.TextCtrl( self.m_panel9, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.m_textCtrl25.SetMaxSize( wx.Size( 60,40 ) )
-
-        bSizer16.Add( self.m_textCtrl25, 0, wx.ALL, 5 )
+        bSizer16.Add( self.m_textCtrl25, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
 
         self.m_button7 = wx.Button( self.m_panel9, wx.ID_ANY, _(u"South"), wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.m_button7.SetMaxSize( wx.Size( 40,40 ) )
-
-        bSizer16.Add( self.m_button7, 0, wx.ALL, 5 )
+        bSizer16.Add( self.m_button7, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
 
 
         bSizer16.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
 
-        bSizer32.Add( bSizer16, 1, wx.EXPAND, 5 )
+        bSizer32.Add( bSizer16, 2, wx.EXPAND, 5 )
 
 
         self.m_panel9.SetSizer( bSizer32 )
         self.m_panel9.Layout()
         bSizer32.Fit( self.m_panel9 )
-        bSizer12.Add( self.m_panel9, 0, wx.EXPAND |wx.ALL, 5 )
+        bSizer12.Add( self.m_panel9, 1, wx.ALL|wx.EXPAND, 5 )
 
 
-        bSizer4.Add( bSizer12, 6, wx.EXPAND, 5 )
+        bSizer4.Add( bSizer12, 3, wx.EXPAND, 5 )
 
-        bSizer13 = wx.BoxSizer( wx.VERTICAL )
+        bSizer33 = wx.BoxSizer( wx.VERTICAL )
 
-        bSizer18 = wx.BoxSizer( wx.VERTICAL )
+        self.m_panel10 = wx.Panel( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.BORDER_SUNKEN )
+        bSizer34 = wx.BoxSizer( wx.VERTICAL )
 
-        self.m_staticText9 = wx.StaticText( sbSizer2.GetStaticBox(), wx.ID_ANY, _(u"Current Positon"), wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.m_staticText9.Wrap( -1 )
+        self.m_staticText31 = wx.StaticText( self.m_panel10, wx.ID_ANY, _(u"Press and Hold to move"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText31.Wrap( -1 )
 
-        bSizer18.Add( self.m_staticText9, 0, wx.ALL|wx.EXPAND, 5 )
+        bSizer34.Add( self.m_staticText31, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
-        self.m_textCtrl2 = wx.TextCtrl( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer18.Add( self.m_textCtrl2, 1, wx.ALL|wx.EXPAND, 5 )
+        bSizer36 = wx.BoxSizer( wx.HORIZONTAL )
+
+        bSizer35 = wx.BoxSizer( wx.VERTICAL )
+
+        self.m_button21 = wx.Button( self.m_panel10, wx.ID_ANY, _(u"East"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer35.Add( self.m_button21, 1, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.EXPAND, 5 )
+
+        self.m_button22 = wx.Button( self.m_panel10, wx.ID_ANY, _(u"West"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer35.Add( self.m_button22, 1, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.EXPAND, 5 )
+
+        self.m_button23 = wx.Button( self.m_panel10, wx.ID_ANY, _(u"North"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer35.Add( self.m_button23, 1, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.EXPAND, 5 )
+
+        self.m_button24 = wx.Button( self.m_panel10, wx.ID_ANY, _(u"South"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer35.Add( self.m_button24, 1, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.EXPAND, 5 )
 
 
-        bSizer13.Add( bSizer18, 1, wx.EXPAND, 5 )
+        bSizer36.Add( bSizer35, 1, wx.EXPAND, 5 )
+
+        bSizer37 = wx.BoxSizer( wx.VERTICAL )
 
 
-        bSizer4.Add( bSizer13, 4, wx.EXPAND, 5 )
+        bSizer37.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.m_toggleBtn1 = wx.ToggleButton( self.m_panel10, wx.ID_ANY, _(u"Fast"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer37.Add( self.m_toggleBtn1, 1, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.EXPAND, 5 )
+
+        self.m_toggleBtn2 = wx.ToggleButton( self.m_panel10, wx.ID_ANY, _(u"Slow"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_toggleBtn2.SetValue( True )
+        bSizer37.Add( self.m_toggleBtn2, 1, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.EXPAND, 5 )
+
+
+        bSizer37.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+
+        bSizer36.Add( bSizer37, 1, wx.EXPAND, 5 )
+
+
+        bSizer34.Add( bSizer36, 1, wx.EXPAND, 5 )
+
+
+        self.m_panel10.SetSizer( bSizer34 )
+        self.m_panel10.Layout()
+        bSizer34.Fit( self.m_panel10 )
+        bSizer33.Add( self.m_panel10, 1, wx.EXPAND |wx.ALL, 5 )
+
+
+        bSizer4.Add( bSizer33, 3, wx.EXPAND, 5 )
 
 
         sbSizer2.Add( bSizer4, 1, wx.EXPAND, 5 )
@@ -301,7 +340,7 @@ class MainFrame ( wx.Frame ):
         bSizer21.Add( self.m_panel3, 1, wx.EXPAND |wx.ALL, 5 )
 
 
-        bSizer20.Add( bSizer21, 1, wx.EXPAND, 5 )
+        bSizer20.Add( bSizer21, 1, wx.EXPAND|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
         bSizer22 = wx.BoxSizer( wx.VERTICAL )
 
@@ -360,7 +399,7 @@ class MainFrame ( wx.Frame ):
         bSizer22.Add( self.m_panel4, 1, wx.EXPAND |wx.ALL, 5 )
 
 
-        bSizer20.Add( bSizer22, 1, wx.EXPAND, 5 )
+        bSizer20.Add( bSizer22, 1, wx.EXPAND|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
 
         bSizer7.Add( bSizer20, 1, wx.EXPAND, 5 )
@@ -380,11 +419,84 @@ class MainFrame ( wx.Frame ):
 
         self.SetSizer( bSizer1 )
         self.Layout()
+        self.m_statusBar1 = self.CreateStatusBar( 1, wx.STB_SIZEGRIP, wx.ID_ANY )
 
         self.Centre( wx.BOTH )
 
+        # Connect Events
+        self.m_button1.Bind( wx.EVT_BUTTON, self.m_button1OnButtonClick )
+        self.m_button2.Bind( wx.EVT_BUTTON, self.m_button2OnButtonClick )
+        self.m_button3.Bind( wx.EVT_BUTTON, self.m_button3OnButtonClick )
+        self.m_button25.Bind( wx.EVT_BUTTON, self.m_button25OnButtonClick )
+        self.m_button31.Bind( wx.EVT_BUTTON, self.m_button31OnButtonClick )
+        self.m_button4.Bind( wx.EVT_BUTTON, self.m_button4OnButtonClick )
+        self.m_button5.Bind( wx.EVT_BUTTON, self.m_button5OnButtonClick )
+        self.m_button6.Bind( wx.EVT_BUTTON, self.m_button6OnButtonClick )
+        self.m_button7.Bind( wx.EVT_BUTTON, self.m_button7OnButtonClick )
+        self.m_button21.Bind( wx.EVT_BUTTON, self.m_button21OnButtonClick )
+        self.m_button22.Bind( wx.EVT_BUTTON, self.m_button22OnButtonClick )
+        self.m_button23.Bind( wx.EVT_BUTTON, self.m_button23OnButtonClick )
+        self.m_button24.Bind( wx.EVT_BUTTON, self.m_button24OnButtonClick )
+        self.m_button10.Bind( wx.EVT_BUTTON, self.m_button10OnButtonClick )
+        self.m_button11.Bind( wx.EVT_BUTTON, self.m_button11OnButtonClick )
+        self.m_button12.Bind( wx.EVT_BUTTON, self.m_button12OnButtonClick )
+        self.m_button13.Bind( wx.EVT_BUTTON, self.m_button13OnButtonClick )
+
     def __del__( self ):
         pass
+
+
+    # Virtual event handlers, override them in your derived class
+    def m_button1OnButtonClick( self, event ):
+        event.Skip()
+
+    def m_button2OnButtonClick( self, event ):
+        event.Skip()
+
+    def m_button3OnButtonClick( self, event ):
+        event.Skip()
+
+    def m_button25OnButtonClick( self, event ):
+        event.Skip()
+
+    def m_button31OnButtonClick( self, event ):
+        event.Skip()
+
+    def m_button4OnButtonClick( self, event ):
+        event.Skip()
+
+    def m_button5OnButtonClick( self, event ):
+        event.Skip()
+
+    def m_button6OnButtonClick( self, event ):
+        event.Skip()
+
+    def m_button7OnButtonClick( self, event ):
+        event.Skip()
+
+    def m_button21OnButtonClick( self, event ):
+        event.Skip()
+
+    def m_button22OnButtonClick( self, event ):
+        event.Skip()
+
+    def m_button23OnButtonClick( self, event ):
+        event.Skip()
+
+    def m_button24OnButtonClick( self, event ):
+        event.Skip()
+
+    def m_button10OnButtonClick( self, event ):
+        event.Skip()
+
+    def m_button11OnButtonClick( self, event ):
+        event.Skip()
+
+    def m_button12OnButtonClick( self, event ):
+        event.Skip()
+
+    def m_button13OnButtonClick( self, event ):
+        event.Skip()
 
 
 ###########################################################################
